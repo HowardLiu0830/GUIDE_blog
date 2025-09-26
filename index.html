@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>GUIDE</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/GUIDE.ico">
+  <link rel="apple-touch-icon" href="static/images/GUIDE.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <!-- TODO: Replace with your lab's related works -->
+        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+          <div class="work-info">
+            <!-- TODO: Replace with actual paper title -->
+            <h5>Paper Title 1</h5>
+            <!-- TODO: Replace with brief description -->
+            <p>Brief description of the work and its main contribution.</p>
+            <!-- TODO: Replace with venue and year -->
+            <span class="work-venue">Conference/Journal 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <!-- TODO: Add more related works or remove extra items -->
+        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 2</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 3</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title">
+              <span class="title-bold">GUIDE:</span>
+              <span class="title-subtitle">Towards Scalable Advising for Research Ideas</span>
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=%7EYaowenqi_Liu1" target="_blank">Yaowenqi Liu</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="https://openreview.net/profile?id=%7EBingXu_Meng1" target="_blank">Bingxu Meng</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://research4pan.github.io/" target="_blank">Rui Pan</a><sup>*</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://jh603.github.io/" target="_blank">Jerry Huang</a><sup></sup>,</span>
+                      <span class="author-block">
+                      <a href="https://tongzhang-ml.org/" target="_blank">Tong Zhang</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block">UIUC<br></span>
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2507.08870v1.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Arxiv</span>
+                      </a>
+                    </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/HowardLiu0830/GUIDE-Research-Idea-Evaluation" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            The field of AI research is advancing at an unprecedented pace, enabling automated hypothesis generation and experimental design across diverse domains such as biology, math- ematics, and artificial intelligence. Despite these advancements, there remains a significant gap in the availability of scalable advising systems capable of providing high-quality, well-reasoned feedback to refine proposed hypotheses and experimental designs. To address this challenge, we explore key factors that underlie the development of robust advising systems, including model size, context length, confidence estimation, and structured reasoning processes. Our findings reveal that a relatively small model, when equipped with a well-compressed literature database and a structured reasoning framework, can outperform powerful general-purpose language models such as Deepseek-R1 in terms of acceptance rates for self-ranked top-30% submissions to ICLR 2025. Moreover, when limited to high-confidence predictions, our system achieves an acceptance rate exceeding 90% on the ICLR 2025 test set, underscoring its potential to significantly enhance the quality and efficiency of hypothesis generation and experimental design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Inference Pipeline Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <!-- Main research image -->
+          <div class="single-image-container">
+            <img src="static/images/carousel1.jpg" alt="Main research visualization" class="main-research-image" loading="lazy"/>
+          </div>
+          <!-- Inference Pipeline (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Inference Pipeline</h2>
+            <p>
+              Our pipeline evaluates research ideas in four steps: inputting the paper’s abstract, contributions, method, and experiment setup; retrieving section-level summaries of similar works from ICLR papers; generating structured feedback with rubrics on novelty, significance, and soundness; and producing a final 1–10 rating through a lightweight classifier. By using modular summaries, the system fits more literature into the same context window, enabling richer and more precise advising at scale. With rubric guidance, the feedback is not only detailed but also multi-dimensional, ensuring that each idea is assessed for originality, importance, and methodological & experimental rigor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Inference Pipeline section -->
+
+<!-- Training Pipeline Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <!-- Main research image -->
+          <div class="single-image-container">
+            <img src="static/images/carousel2.jpg" alt="Main research visualization" class="main-research-image" loading="lazy"/>
+          </div>
+          <!-- Training Pipeline (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Training Pipeline</h2>
+            <p>
+              <strong>1. Warm-up SFT:</strong> We begin with Qwen2.5-7B-Instruct and fine-tune it on 4k high-quality idea–evaluation pairs synthesized with DeepSeek-R1. These rubric-guided examples teach the model how to provide structured advising feedback.
+            </p>
+            <p>
+              <strong>2. Reward Modeling:</strong> Next, we build a reward function that scores responses by aligning them with human ratings and checking textual similarity (e.g., ROUGE). This model helps identify which candidate outputs best reflect expert-style reviews.
+            </p>
+            <p>
+              <strong>3. RAFT:</strong> Finally, we apply Reward-Ranked Fine-Tuning in an iterative generate–select–train loop. The model produces multiple candidates, the reward function selects the highest-scoring ones, and these are fed back into training. This progressively sharpens the model’s ability to give rubric-grounded, human-like evaluations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Training Pipeline section -->
+
+
+<!-- Rubric Effectiveness Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+
+          <!-- Rubric Effectiveness (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Rubric-Guided Evaluation</h2>
+            <p>
+              In <strong>GUIDE</strong>, 
+              rubric-based prompts guide the model to provide structured, reliable feedback for early-stage research ideas.
+              These rubrics emphasize three key dimensions — <em>Novelty</em>, <em>Significance</em>, and <em>Soundness</em>.
+              By explicitly structuring evaluations along these axes, <strong>GUIDE</strong> reduces hallucinations, improves alignment with
+              expert review criteria, and ensures that each idea is assessed for originality, impact, and methodological rigor.
+            </p>
+          </div>
+
+          <!-- Rubric Effectiveness Carousel -->
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="item has-text-centered">
+              <div style="max-width: 60%; margin: 0 auto;">
+                <img src="static/images/novelty.png" alt="Novelty evaluation visualization" loading="lazy"/>
+              </div>
+              <h2 class="subtitle has-text-centered">
+                Rubrics on <strong>Novelty</strong>: guiding the model to assess originality of research ideas.
+              </h2>
+            </div>
+
+            <div class="item has-text-centered">
+              <div style="max-width: 60%; margin: 0 auto;">
+                <img src="static/images/significance.png" alt="Significance evaluation visualization" loading="lazy"/>
+              </div>
+              <h2 class="subtitle has-text-centered">
+                Rubrics on <strong>Significance</strong>: highlighting the importance and impact of contributions.
+              </h2>
+            </div>
+
+            <div class="item has-text-centered">
+              <div style="max-width: 60%; margin: 0 auto;">
+                <img src="static/images/soundness.png" alt="Soundness evaluation visualization" loading="lazy"/>
+              </div>
+              <h2 class="subtitle has-text-centered">
+                Rubrics on <strong>Soundness</strong>: ensuring methodological rigor and experimental validity, though sometimes overly strict.
+              </h2>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Rubric Effectiveness Section -->
+
+
+<!-- Experiment Results Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+
+          <!-- Experiment Results (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Experiment Results</h2>
+            <p>
+              To evaluate <strong>GUIDE-7B</strong>, we tested it on 1,000 ICLR 2025 submissions 
+              (acceptance rate = 31.9%) using three metrics:
+            </p>
+            <ul>
+              <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measuring the ability to identify <em>elite</em> submissions.</li>
+              <li><strong>Top-30% Precision</strong>: Among the top 30% highest-ranked papers, the proportion that were accepted — aligning with ICLR’s real acceptance threshold and testing if the system can predict <em>acceptable</em> papers.</li>
+              <li><strong>Accept Recall</strong>: Among all papers actually accepted by ICLR 2025, the proportion that appear in the model’s top 30% predictions — measuring how many good papers the system <em>does not miss</em>.</li>
+            </ul>
+            <p>
+              Results show that <strong>GUIDE-7B</strong> achieves the highest <em>Top-30% Precision</em> (51.3%), 
+              outperforming larger general-purpose LLMs like GPT-4o-mini and DeepSeek-R1. 
+            </p>
+          </div>
+
+          <!-- Backbone Comparison (Table 2) -->
+          <div class="content is-size-6">
+            <h3 class="title is-4 has-text-centered">Main Results</h3>
+            <div class="table-container">
+              <table class="table is-striped is-hoverable is-fullwidth is-narrow">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Top-5% Precision</th>
+                    <th>Top-30% Precision</th>
+                    <th>Accept Recall</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>GPT-4o-mini</td>
+                    <td>70.0&nbsp;&plusmn;&nbsp;4.6%</td>
+                    <td>47.7&nbsp;&plusmn;&nbsp;2.4%</td>
+                    <td>44.8&nbsp;&plusmn;&nbsp;2.2%</td>
+                  </tr>
+                  <tr>
+                    <td>QwQ-32B</td>
+                    <td>66.7&nbsp;&plusmn;&nbsp;1.2%</td>
+                    <td>48.6&nbsp;&plusmn;&nbsp;1.5%</td>
+                    <td>45.8&nbsp;&plusmn;&nbsp;1.4%</td>
+                  </tr>
+                  <tr>
+                    <td>DeepSeek-R1</td>
+                    <td>69.3&nbsp;&plusmn;&nbsp;4.6%</td>
+                    <td>50.2&nbsp;&plusmn;&nbsp;0.5%</td>
+                    <td>47.2&nbsp;&plusmn;&nbsp;0.5%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>GUIDE-7B</strong></td>
+                    <td><strong>72.0&nbsp;&plusmn;&nbsp;2.0%</strong></td>
+                    <td><strong>51.3&nbsp;&plusmn;&nbsp;0.4%</strong></td>
+                    <td><strong>48.3&nbsp;&plusmn;&nbsp;0.3%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="is-size-7 has-text-grey has-text-right">
+              Mean&nbsp;&plusmn;&nbsp;std over 3 trials.
+            </p>
+          </div>
+
+          <!-- Baseline Table begin -->
+          <div class="content is-size-6">
+            <h3 class="title is-4 has-text-centered">Baseline Comparison</h3>
+            <div class="table-container">
+              <table class="table is-striped is-fullwidth is-hoverable">
+                <thead>
+                  <tr>
+                    <th>Baseline / System</th>
+                    <th>Accuracy</th>
+                    <th>F1</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Human (NeurIPS)</td>
+                    <td>73.4%</td>
+                    <td>48.4%</td>
+                  </tr>
+                  <tr>
+                    <td>AI Scientist with DeepSeek-R1</td>
+                    <td>40.7%</td>
+                    <td>49.5%</td>
+                  </tr>
+                  <tr>
+                    <td>AI Scientist with QwQ-32B</td>
+                    <td>42.7%</td>
+                    <td>43.3%</td>
+                  </tr>
+                  <tr>
+                    <td>AI Scientist with GPT-4.1-nano</td>
+                    <td>61.2%</td>
+                    <td>20.8%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>GUIDE-7B</strong></td>
+                    <td><strong>69.1%</strong></td>
+                    <td><strong>50.1%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Baseline Table end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Experiment Results Section -->
+
+
+<!-- Ablation Experiments Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+
+          <!-- Ablations (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Ablation Experiments</h2>
+            <p>
+              We conduct two ablations to understand which components most strongly drive GUIDE’s advising quality.
+              First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context
+              window. Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
+            </p>
+          </div>
+
+          <!-- Ablation Carousel -->
+          <div id="ablation-carousel" class="carousel results-carousel">
+
+            <!-- Ablation 1: Modular Summarization -->
+            <div class="item has-text-centered">
+              <div class="box" style="max-width: 120%; margin: 0 auto;">
+                <h3 class="title is-4">Ablation 1 — Scalable Advising with Modular Summarization</h3>
+                <p class="is-size-6 has-text-justified">
+                  Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
+                  into the same context window. Empirically, using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for Top-30% Precision,
+                  while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
+                </p>
+                <div style="max-width: 90%; margin: 1rem auto;">
+                  <img src="static/images/ablation_summarization.png"
+                       alt="Ablation on retrieved contents: full paper vs. modular summaries"
+                       loading="lazy"/>
+                </div>
+                <p class="is-size-7 has-text-grey">
+                  Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits; Abstract + Method are the strongest pair.
+                </p>
+              </div>
+            </div>
+
+            <!-- Ablation 2: Rubric-Guided Prompting -->
+            <div class="item has-text-centered">
+              <div class="box" style="max-width: 120%; margin: 0 auto;">
+                <h3 class="title is-4">Ablation 2 — Rubric-Guided Prompting</h3>
+                <p class="is-size-6 has-text-justified">
+                  We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
+                  whereas emphasizing only <strong>Soundness</strong> may hurt (overly strict to experimental design). Using <em>all</em> rubrics yields the best overall performance.
+                </p>
+                <div style="max-width: 90%; margin: 1rem auto;">
+                  <img src="static/images/ablation_rubrics.png"
+                       alt="Ablation on rubric prompts: none vs. single-rubric vs. all"
+                       loading="lazy"/>
+                </div>
+                <p class="is-size-7 has-text-grey">
+                  Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best across backbones.
+                </p>
+              </div>
+            </div>
+
+          </div><!-- /carousel -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Ablation Experiments Section -->
+
+
+
+<!-- Uncertainty Analysis Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+
+          <!-- Uncertainty Analysis (short description) -->
+          <div class="content has-text-justified is-size-6">
+            <h2 class="title is-3 has-text-centered">Uncertainty-Aware Evaluation</h2>
+            <p>
+              Beyond overall precision and recall, <strong>GUIDE-7B</strong> also quantifies its own uncertainty when 
+              evaluating research ideas. This allows filtering predictions by confidence level. 
+              The analysis shows that when only high-confidence predictions are considered, 
+              the system achieves <em>over 90% precision</em> in acceptance prediction. 
+              This demonstrates that GUIDE is not only competitive in aggregate ranking metrics, 
+              but can also provide <em>trustworthy shortlists</em> of promising papers by exposing confidence estimates 
+              alongside rubric-guided evaluations.
+            </p>
+          </div>
+
+          <!-- Uncertainty Analysis Image -->
+          <div class="single-image-container">
+            <img src="static/images/Uncertainty.png" alt="Uncertainty analysis visualization" class="main-research-image" loading="lazy"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Uncertainty Analysis Section -->
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
+  title={GUIDE: Towards Scalable Advising for Research Ideas},
+  author={Yaowenqi Liu and Bingxu Meng and Rui Pan and Tong Zhang},
+  journal={Conference/Journal Name},
+  eprint={2507.08870},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2507.08870}, 
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
