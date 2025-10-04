@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>GUIDE: Towards Scalable Advising for Research Ideas</title>
+
+  <!-- Meta -->
+  <meta name="description" content="GUIDE: Towards Scalable Advising for Research Ideas" />
+  <meta name="keywords" content="LLM, RAG, Research Advising, GUIDE" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Icons / Social -->
+  <link rel="icon" type="image/x-icon" href="static/images/GUIDE.ico" />
+  <meta property="og:image" content="static/images/guide_banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/f8ddf9854a.js" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css" />
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="static/css/index.css" />
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <!-- Optional: Chart.js (kept from template, safe to remove if unused) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Quick page-level styles to match the first site's vibe -->
+  <style>
+    body {
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+      color: #333;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .title.is-1 {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .subtitle.is-3 {
+      color: #2c3e50;
+      font-weight: 500;
+    }
+    .button.is-dark {
+      background-color: #2c3e50;
+      color: white;
+      transition: background 0.3s ease;
+    }
+    .button.is-dark:hover {
+      background-color: #000;
+      color: white;
+    }
+    .author-block a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .author-block a:hover {
+      color: #1a73e8;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .results-section .section-title,
+    .method-section .section-title,
+    .case-section .section-title {
+      text-align: center !important;
+    }
+    .publication-title,
+    .publication-subtitle {
+      text-align: center !important;
+    }
+    /* Abstract 标题居中 */
+    .section h2.section-title {
+      text-align: center !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">GUIDE</h1>
+            <h2 class="subtitle is-3 publication-subtitle">
+              Towards Scalable Advising for Research Ideas
+            </h2>
+
+            <!-- Authors -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=%7EYaowenqi_Liu1" target="_blank">Yaowenqi Liu</a><sup>*</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=%7EBingXu_Meng1" target="_blank">Bingxu Meng</a><sup>*</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://research4pan.github.io/" target="_blank">Rui Pan</a><sup>*</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://infinity-stars.github.io/" target="_blank">Yuxing Liu</a>
+              </span>
+              <span class="author-block">
+                <a href="https://jh603.github.io/" target="_blank">Jerry Huang</a>
+              </span>
+              <span class="author-block">
+                <a href="https://cs.stanford.edu/people/jiaxuan/" target="_blank">Jiaxuan You</a>
+              </span>
+              <span class="author-block">
+                <a href="https://tongzhang-ml.org/" target="_blank">Tong Zhang</a>
+              </span>
+
+              <div class="affiliations" style="margin-top: 1rem;">
+                <p><sup>1</sup> University of Illinois Urbana–Champaign</p>
+                <small><sup>*</sup> Equal Contribution</small>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="column has-text-centered" style="margin-top: 1.5rem;">
+              <div class="link-block">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2507.08870v1.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/HowardLiu0830/GUIDE-Research-Idea-Evaluation" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                </span>
+              </div>
+            </div>
+
+          </div> <!-- /column -->
+        </div> <!-- /columns -->
+      </div> <!-- /container -->
+    </div> <!-- /hero-body -->
+  </section>
+
+  <!-- ABSTRACT -->
+  <section class="section" style="background:#f8f9fa;">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+          The field of AI research is advancing at an unprecedented pace, enabling automated hypothesis generation and experimental design across diverse domains such as biology, math- ematics, and artificial intelligence. Despite these advancements, there remains a significant gap in the availability of scalable advising systems capable of providing high-quality, well-reasoned feedback to refine proposed hypotheses and experimental designs. To address this challenge, we explore key factors that underlie the development of robust advising systems, including model size, context length, confidence estimation, and structured reasoning processes. Our findings reveal that a relatively small model, when equipped with a well-compressed literature database and a structured reasoning framework, can outperform powerful general-purpose language models such as Deepseek-R1 in terms of acceptance rates for self-ranked top-30% submissions to ICLR 2025. Moreover, when limited to high-confidence predictions, our system achieves an acceptance rate exceeding 90% on the ICLR 2025 test set, underscoring its potential to significantly enhance the quality and efficiency of hypothesis generation and experimental design.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="Key-Achievements">
+    <style>
+      /* Scope styles to this section to avoid collisions */
+      #Key-Achievements.section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      #Key-Achievements .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      #Key-Achievements .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      #Key-Achievements .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      #Key-Achievements .card {
+        position: relative;
+        height: 220px;
+        perspective: 1000px;
+      }
+      #Key-Achievements .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+      }
+      #Key-Achievements .card:hover .card-inner { transform: rotateY(180deg); }
+
+      #Key-Achievements .card-front,
+      #Key-Achievements .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      #Key-Achievements .card-back {
+        transform: rotateY(180deg);
+        overflow-y: auto;
+      }
+
+      #Key-Achievements .icon { font-size: 22px; margin-right: 10px; }
+      #Key-Achievements .card-title {
+        display: flex; align-items: center; margin-bottom: 10px;
+        font-size: 18px; font-weight: 700;
+      }
+      #Key-Achievements .content { font-size: 14px; line-height: 1.6; }
+      #Key-Achievements .bullets { margin: 8px 0 0 0; padding-left: 18px; }
+      #Key-Achievements .bullets li { margin-bottom: 6px; }
+
+      /* Tiny metric row look */
+      #Key-Achievements .mini-metrics {
+        font-size: 13px; margin-top: 6px;
+        background: #f8fafc; border: 1px solid #eef2f7; border-radius: 8px;
+        padding: 10px;
+      }
+      #Key-Achievements .mini-metrics strong { color: #111827; }
+
+      /* Buttons row on the back side */
+      #Key-Achievements .btn-row {
+        display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+      }
+      #Key-Achievements .btn-row .button.is-xxs {
+        font-size: 12px; height: 28px; padding: 0 10px; border-radius: 6px;
+      }
+
+      @media (max-width: 768px) {
+        #Key-Achievements.section { padding: 2rem 0; }
+        #Key-Achievements .cards { grid-template-columns: 1fr; padding: 10px; }
+        #Key-Achievements .card { height: 260px; }
+        #Key-Achievements .container { padding: 0 20px; }
+      }
+    </style>
+
+    <div class="container">
+      <h2 class="section-title">Key Achievements</h2>
+
+      <div class="cards">
+
+        <!-- Card 1: Stronger than DeepSeek-R1 -->
+        <div class="card" aria-label="GUIDE-7B vs DeepSeek-R1 performance card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <div>
+                <div class="card-title">
+                  <i class="fas fa-chart-line icon" style="color:#3b82f6;"></i>
+                  7B > 671B
+                </div>
+                <div class="content">
+                  <strong>GUIDE-7B</strong> achieves higher predict precision and recall on ICLR 2025 submissions than <strong>DeepSeek-R1 (671B)</strong>.
+                </div>
+              </div>
+              <div class="content" style="font-size:12px;color:#6b7280;">
+                Hover / tap to see details
+              </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-back">
+              <div class="content">
+                <div class="card-title">
+                  <i class="fas fa-trophy icon" style="color:#10b981;"></i>
+                  Main Results (ICLR-2025 test set)
+                </div>
+                <ul class="bullets">
+                  <li><strong>Top-5% Precision</strong>: 72.0% (GUIDE-7B) vs 69.3% (DeepSeek-R1)</li>
+                  <li><strong>Top-30% Precision</strong> : 51.3% (GUIDE-7B) vs 50.2% (DeepSeek-R1)</li>
+                  <li><strong>Accept Recall</strong>: 48.3% (GUIDE-7B) vs 47.2% (DeepSeek-R1)</li>
+                </ul>
+                <div class="btn-row">
+                  <a class="button is-dark is-xxs" href="#experiment-results">
+                    View Results
+                  </a>
+                  <a class="button is-primary is-light is-xxs" href="#ablation">
+                    Why It Scales
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: High-confidence precision -->
+        <div class="card" aria-label="High-confidence precision card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <div>
+                <div class="card-title">
+                  <i class="fas fa-shield-alt icon" style="color:#22c55e;"></i>
+                  >90% Precision at High Confidence
+                </div>
+                <div class="content">
+                  <strong>90%</strong> precision on high-confidence predictions, enabling trustworthy shortlists of promising papers.
+                </div>
+              </div>
+              <div class="content" style="font-size:12px;color:#6b7280;">
+                Hover / tap to see details
+              </div>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-back">
+              <div class="content">
+                <div class="card-title">
+                  <i class="fas fa-signal icon" style="color:#6366f1;"></i>
+                  Uncertainty-Aware Evaluation
+                </div>
+                <ul class="bullets">
+                  <li>Rank by <em>low entropy</em> (high certainty) to surface the most reliable evaluations.</li>
+                  <li>Within the highest-confidence slice, acceptance-prediction precision exceeds <strong>90%</strong>.</li>
+                  <li>Ideal for automated paper triage and monthly recommendations.</li>
+                </ul>
+                <div class="btn-row">
+                  <a class="button is-dark is-xxs" href="#uncertainty">
+                    See Confidence Curve
+                  </a>
+                  <a class="button is-primary is-light is-xxs" href="#website-showcase">
+                    See Website Flow
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cards -->
+    </div>
+  </section>
+
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  </section>
+  <!-- Results Section -->
+  <section class="results-section">
+    <style>
+      .goedel-row { font-weight: bold; }
+
+      .results-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .results-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .subsection-title {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+      }
+      .table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        overflow: auto;
+      }
+      .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        min-width: 800px;
+      }
+      .table-container th,
+      .table-container td {
+        padding: 12px 10px;
+        text-align: left;
+        border-bottom: 1px solid #e1e1e1;
+      }
+      .table-container th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      .table-container tbody tr:hover {
+        background-color: #f5f5f5 !important;
+        transition: background-color 0.2s ease;
+      }
+
+      .block-1 { background-color: #fff0f5; }
+      .block-2 { background-color: #f0f8ff; }
+      .block-3 { background-color: #f0fff0; }
+      .block-4 { background-color: #EDEDED; }
+
+      .highlight { color: #2980b9; font-weight: bold; }
+      .subtitle {
+        text-align: left;
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      .description {
+        margin: 1.5rem 0;
+        line-height: 1.8;
+        color: #444;
+      }
+
+      @media (max-width: 768px) {
+        .results-section { padding: 2rem 1rem; }
+        .table-container th,
+        .table-container td { padding: 8px; font-size: 0.9rem; }
+      }
+
+      /* Utility classes carried from the template */
+      .numeric-cell { text-align: left; }
+      .row-header { font-weight: 600; }
+    </style>
+
+    <div class="results-container">
+      <h2 class="section-title">Experimental Results</h2>
+
+      <h3 class="subsection-title">Evaluation Setup</h3>
+      <div class="description">
+        <p>
+          We evaluate <strong>GUIDE-7B</strong> on <strong>1,000 ICLR 2025 submissions</strong> (acceptance rate = 31.9%) using three metrics:
+        </p>
+        <ul>
+          <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measures identification of <em>elite</em> submissions.</li>
+          <li><strong>Top-30% Precision</strong>: Among the top 30% highest-ranked papers, the proportion that were accepted — aligns with the ICLR acceptance threshold and tests if the system can predict <em>acceptable</em> papers.</li>
+          <li><strong>Accept Recall</strong>: Among all papers actually accepted by ICLR 2025, the proportion that appear in the model’s top 30% predictions — measures how many good papers the system <em>does not miss</em>.</li>
+        </ul>
+        <p>
+          Results show that <strong>GUIDE-7B</strong> achieves the highest <em>Top-30% Precision</em> (51.3%), outperforming larger general-purpose LLMs such as GPT-4o-mini and DeepSeek-R1.
+        </p>
+      </div>
+
+      <!-- Main Results -->
+      <h3 class="subsection-title" id="experiment-results">Main Results</h3>
+      <div class="table-container">
+        <h3 class="subtitle">Table: Mean&nbsp;&plusmn;&nbsp;std over 3 trials on ICLR 2025 test set</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Top-5% Precision</th>
+              <th>Top-30% Precision</th>
+              <th>Accept Recall</th>
+            </tr>
+          </thead>
+          <tbody>
+              <td class="row-header">GPT-4o-mini</td>
+              <td class="numeric-cell">70.0&nbsp;&plusmn;&nbsp;4.6%</td>
+              <td class="numeric-cell">47.7&nbsp;&plusmn;&nbsp;2.4%</td>
+              <td class="numeric-cell">44.8&nbsp;&plusmn;&nbsp;2.2%</td>
+            </tr>
+              <td class="row-header">QwQ-32B</td>
+              <td class="numeric-cell">66.7&nbsp;&plusmn;&nbsp;1.2%</td>
+              <td class="numeric-cell">48.6&nbsp;&plusmn;&nbsp;1.5%</td>
+              <td class="numeric-cell">45.8&nbsp;&plusmn;&nbsp;1.4%</td>
+            </tr>
+              <td class="row-header">DeepSeek-R1</td>
+              <td class="numeric-cell">69.3&nbsp;&plusmn;&nbsp;4.6%</td>
+              <td class="numeric-cell">50.2&nbsp;&plusmn;&nbsp;0.5%</td>
+              <td class="numeric-cell">47.2&nbsp;&plusmn;&nbsp;0.5%</td>
+            </tr>
+              <td class="row-header">GUIDE-7B</td>
+              <td class="numeric-cell highlight">72.0&nbsp;&plusmn;&nbsp;2.0%</td>
+              <td class="numeric-cell highlight">51.3&nbsp;&plusmn;&nbsp;0.4%</td>
+              <td class="numeric-cell highlight">48.3&nbsp;&plusmn;&nbsp;0.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Baseline Comparison -->
+      <h3 class="subsection-title">Baseline Comparison</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Baseline / System</th>
+              <th>Accuracy</th>
+              <th>F1</th>
+            </tr>
+          </thead>
+          <tbody>
+              <td class="row-header">Human (NeurIPS)</td>
+              <td class="numeric-cell">73.4%</td>
+              <td class="numeric-cell">48.4%</td>
+            </tr>
+              <td class="row-header">AI Scientist with DeepSeek-R1</td>
+              <td class="numeric-cell">40.7%</td>
+              <td class="numeric-cell">49.5%</td>
+            </tr>
+              <td class="row-header">AI Scientist with QwQ-32B</td>
+              <td class="numeric-cell">42.7%</td>
+              <td class="numeric-cell">43.3%</td>
+            </tr>
+              <td class="row-header">AI Scientist with GPT-4.1-nano</td>
+              <td class="numeric-cell">61.2%</td>
+              <td class="numeric-cell">20.8%</td>
+            </tr>
+              <td class="row-header">GUIDE-7B</td>
+              <td class="numeric-cell highlight">69.1%</td>
+              <td class="numeric-cell highlight">50.1%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ablation Experiments Section -->
+  <section class="results-section" id="ablation">
+    <div class="results-container">
+      <h2 class="section-title">Ablation Experiments</h2>
+
+      <div class="description">
+        <p>
+          We conduct two ablations to identify which components most strongly drive GUIDE’s advising quality.
+          First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context window.
+          Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
+        </p>
+      </div>
+
+      <!-- Ablation 1 -->
+      <div class="table-container" style="padding: 1rem;">
+        <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
+        <p class="description">
+          Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
+          into the same context window. Empirically, using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for Top-30% Precision,
+          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
+        </p>
+        <div style="max-width: 90%; margin: 1rem auto; display: flex; justify-content: center;">
+          <img src="static/images/ablation_summarization.png"
+              alt="Ablation on retrieved contents: full paper vs. modular summaries"
+              loading="lazy" style="width:60%; border-radius:8px;" />
+        </div>
+        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits; Abstract + Method are the strongest pair.</p>
+      </div>
+
+      <!-- Ablation 2 -->
+      <div class="table-container" style="padding: 1rem;">
+        <h3 class="subsection-title">Ablation 2 — Rubric-Guided Prompting</h3>
+        <p class="description">
+          We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
+          whereas emphasizing only <strong>Soundness</strong> may hurt (overly strict to experimental design). Using <em>all</em> rubrics yields the best overall performance.
+        </p>
+        <div style="max-width: 90%; margin: 1rem auto;display: flex; justify-content: center;">
+          <img src="static/images/ablation_rubrics.png"
+              alt="Ablation on rubric prompts: none vs. single-rubric vs. all"
+              loading="lazy" style="width:60%; border-radius:8px;" />
+        </div>
+        <p class="subtitle">Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best across backbones.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Uncertainty Analysis Section -->
+  <section class="results-section" id="uncertainty">
+    <div class="results-container">
+      <h2 class="section-title">Uncertainty-Aware Evaluation</h2>
+
+      <div class="description">
+        <p>
+          Beyond overall precision and recall, <strong>GUIDE-7B</strong> quantifies its own uncertainty when evaluating research ideas,
+          allowing filtering by confidence level. When only high-confidence predictions are considered, the system achieves
+          <em>over 90% precision</em> in acceptance prediction. This indicates that GUIDE is not only competitive in aggregate ranking metrics,
+          but can also provide <em>trustworthy shortlists</em> of promising papers by exposing confidence estimates alongside rubric-guided evaluations.
+        </p>
+      </div>
+
+      <div class="table-container" style="padding: 1rem;display: flex; justify-content: center;">
+        <img src="static/images/Uncertainty.png"
+            alt="Uncertainty analysis visualization"
+            class="main-research-image"
+            loading="lazy" style="width:60%; border-radius:8px;" />
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="method-section">
+    <style>
+      .method-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .method-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      /* optional: match other sections' typography helpers */
+      .section-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .subsection-title {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+      }
+      .description {
+        margin: 1.5rem 0;
+        line-height: 1.8;
+        color: #444;
+      }
+      /* figure centering helpers */
+      .figure-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .figure-wrap .figure-inner {
+        flex: 0 0 90%;
+        text-align: left;
+      }
+      .figure-wrap img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        display: block;
+        margin: 0 auto;
+      }
+      /* if you want the figures smaller on large screens */
+      @media (min-width: 1024px) {
+        .figure-wrap.small img { width: 80%; }
+      }
+      @media (max-width: 768px) {
+        .method-section { padding: 2rem 1rem; }
+      }
+    </style>
+
+    <div class="method-container">
+      <h2 class="section-title">Methodology</h2>
+
+      <!-- Inference Pipeline -->
+      <h3 class="subsection-title" id="inference-pipeline">Inference Pipeline</h3>
+      <div class="figure-wrap small">
+        <div class="figure-inner">
+          <figure>
+            <img src="static/images/carousel1.jpg" alt="GUIDE inference pipeline overview" loading="lazy">
+            <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;"></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="description">
+        <p>
+          Our pipeline evaluates research ideas in four steps: (1) taking the paper’s
+          <em>abstract</em>, <em>contributions</em>, <em>method</em>, and <em>experiment setup</em>;
+          (2) retrieving section-level summaries of similar works from ICLR papers; (3) generating
+          structured feedback guided by rubrics on <strong>novelty</strong>, <strong>significance</strong>,
+          and <strong>soundness</strong>; and (4) producing a final <strong>1–10 rating</strong>
+          via a lightweight classifier. Using modular summaries allows more literature to fit into
+          the same context window, enabling richer and more precise advising at scale. With rubric
+          guidance, the feedback is detailed and multi-dimensional, assessing originality, impact,
+          and methodological &amp; experimental rigor.
+        </p>
+      </div>
+
+      <!-- Training Pipeline -->
+      <h3 class="subsection-title" id="Training Pipeline">Training Pipeline</h3>
+      <div class="figure-wrap small">
+        <div class="figure-inner">
+          <figure>
+            <img src="static/images/carousel2.jpg" alt="GUIDE training pipeline overview" loading="lazy" style="width:100%; max-width:none; display:block; margin:0 auto;">
+            <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;"></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="description">
+        <p>
+          <strong>1. Warm-up SFT:</strong> We start from Qwen2.5-7B-Instruct and fine-tune it on
+          4k high-quality idea–evaluation pairs synthesized with DeepSeek-R1. These rubric-guided
+          examples teach the model to provide structured advising feedback.
+        </p>
+        <p>
+          <strong>2. Reward Modeling:</strong> We build a reward function that scores responses by
+          aligning with human ratings and checking textual similarity (e.g., ROUGE). This helps
+          identify candidates that best reflect expert-style reviews.
+        </p>
+        <p>
+          <strong>3. RAFT:</strong> We apply Reward-Ranked Fine-Tuning in an iterative
+          generate–select–train loop: the model produces multiple candidates, the reward model
+          selects the highest-scoring ones, and these are fed back into training. This progressively
+          sharpens rubric-grounded, human-like evaluations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+  <section class="case-section" id="case-rubric">
+    <style>
+      .case-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .case-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      /* typography */
+      .section-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .subsection-title {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+      }
+      .description {
+        margin: 1.5rem 0;
+        line-height: 1.8;
+        color: #444;
+      }
+      /* smaller captions under images */
+      .case-section figcaption {
+        font-size: 0.8rem !important;
+        line-height: 1.35;
+        color: #6b7280;
+        margin-top: 0.4rem;
+      }
+      /* smaller “subtitle” captions beneath slides */
+      .case-section .subtitle {
+        font-size: 0.9rem !important;
+        line-height: 1.4;
+        color: #666;
+        margin-top: 0.6rem;
+      }
+    </style>
+
+    <div class="case-container">
+
+      <h2 class="section-title">Case Study</h2>
+      <h3 class="subsection-title" id="rubric-eval">Rubric-Guided Evaluation</h3>
+
+      <div class="description">
+        <p>
+          In <strong>GUIDE</strong>, rubric-based prompts guide the model to provide structured, reliable feedback for early-stage research ideas.
+          The rubrics emphasize three key dimensions—<em>Novelty</em>, <em>Significance</em>, and <em>Soundness</em>. By explicitly structuring evaluations
+          along these axes, <strong>GUIDE</strong> reduces hallucinations, improves alignment with expert review criteria, and ensures each idea is assessed
+          for originality, impact, and methodological rigor.
+        </p>
+      </div>
+
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+
+          <!-- Use a unique ID to avoid conflicts with other carousels -->
+          <div id="results-carousel-rubric" class="carousel results-carousel">
+
+            <!-- Slide 1: Novelty -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div style="max-width: 60%; margin: 0 auto;">
+                  <img src="static/images/novelty.png" alt="Novelty evaluation visualization" width="100%" loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  Rubrics on <strong>Novelty</strong>: guiding the model to assess originality of research ideas.
+                </h2>
+              </div>
+            </div>
+
+            <!-- Slide 2: Significance -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div style="max-width: 60%; margin: 0 auto;">
+                  <img src="static/images/significance.png" alt="Significance evaluation visualization" width="100%" loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  Rubrics on <strong>Significance</strong>: highlighting the importance and impact of contributions.
+                </h2>
+              </div>
+            </div>
+
+            <!-- Slide 3: Soundness -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div style="max-width: 60%; margin: 0 auto;">
+                  <img src="static/images/soundness.png" alt="Soundness evaluation visualization" width="100%" loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  Rubrics on <strong>Soundness</strong>: ensuring methodological rigor and experimental validity.
+                </h2>
+              </div>
+            </div>
+
+          </div> <!-- /carousel -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-section" id="case-website">
+    <style>
+      .case-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .case-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .subsection-title {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+        text-align: left;
+      }
+      .description {
+        margin: 1.25rem 0 1.75rem;
+        line-height: 1.8;
+        color: #444;
+        text-align: left;
+      }
+      /* Smaller captions below slides */
+      .case-section .subtitle {
+        font-size: 0.9rem !important;
+        line-height: 1.4;
+        color: #666;
+        margin-top: 0.75rem;
+      }
+      /* Limit slide image width and center */
+      .case-section .slide-img-wrap {
+        max-width: 70%;
+        margin: 0 auto;
+      }
+      .case-section .slide-img-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      /* Button row spacing */
+      .case-section .buttons.is-centered {
+        margin-top: 0.5rem;
+      }
+      @media (max-width: 768px) {
+        .case-section { padding: 2rem 1rem; }
+        .case-section .slide-img-wrap { max-width: 95%; }
+      }
+    </style>
+
+    <div class="case-container">
+      <h3 class="subsection-title">Website Showcase</h3>
+      <div class="description">
+        Explore how GUIDE works end-to-end — retrieval, advising, and our monthly arXiv paper recommendations.
+      </div>
+
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+
+          <!-- Unique ID to avoid collisions with other carousels -->
+          <div id="results-carousel-website" class="carousel results-carousel">
+
+            <!-- Slide 1: Retrieval -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div class="slide-img-wrap">
+                  <img src="static/images/thinking.png"
+                      alt="Retrieving related literature with modular summaries"
+                      loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  🔎 <strong>Retrieval — Modular Summaries</strong><br>
+                  Our model retrieves section-level summaries (Abstract/Method/…) to pack more
+                  <em>relevant</em> literature into the same context window.
+                </h2>
+                <div class="buttons is-centered">
+                  <a class="button is-primary is-light is-small" href="#inference-pipeline">View Pipeline</a>
+                  <a class="button is-dark is-small" href="#ablation">Why It Scales</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Advising -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div class="slide-img-wrap">
+                  <img src="static/images/advising.png"
+                      alt="Rubric-guided advising with structured feedback"
+                      loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  🧭 <strong>Advising — Rubric-Guided</strong><br>
+                  Structured, conference-style feedback on <strong>novelty</strong>, <strong>significance</strong>,
+                  and <strong>soundness</strong> for interpretable, trustworthy evaluations.
+                </h2>
+                <div class="buttons is-centered">
+                  <a class="button is-primary is-light is-small" href="#rubric-eval">See Rubrics</a>
+                  <a class="button is-dark is-small" href="#experiment-results">Model Results</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Paper Recommendation -->
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <div class="slide-img-wrap">
+                  <img src="static/images/recommendation.png"
+                      alt="Monthly high-score arXiv paper recommendations"
+                      loading="lazy" />
+                </div>
+                <h2 class="subtitle has-text-centered">
+                  📚 <strong>Monthly arXiv Recommendations</strong><br>
+                  We surface high-score arXiv papers every month with filters (topic / month / score) — a fast track to promising research.
+                </h2>
+                <div class="buttons is-centered">
+                  <a class="button is-dark is-small" href="#uncertainty">Why Confidence Matters</a>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /carousel -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+    
+    
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@misc{liu2025guide,
+    title        = {GUIDE: Towards Scalable Advising for Research Ideas},
+    author       = {Yaowenqi Liu and Bingxu Meng and Rui Pan and Jerry Huang and Tong Zhang},
+    year         = {2025},
+    eprint       = {2507.08870},
+    archivePrefix= {arXiv},
+    primaryClass = {cs.AI; cs.LG},
+    url          = {https://arxiv.org/abs/2507.08870},
+  }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
