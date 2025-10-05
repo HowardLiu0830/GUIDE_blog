@@ -84,6 +84,7 @@
     }
     .results-section .section-title,
     .method-section .section-title,
+    .ablation_section .section-title,
     .case-section .section-title {
       text-align: center !important;
     }
@@ -317,9 +318,6 @@
                   <a class="button is-dark is-xxs" href="#experiment-results">
                     View Results
                   </a>
-                  <a class="button is-primary is-light is-xxs" href="#ablation">
-                    Why It Scales
-                  </a>
                 </div>
               </div>
             </div>
@@ -337,7 +335,7 @@
                   >90% Precision at High Confidence
                 </div>
                 <div class="content">
-                  <strong>90%</strong> precision on high-confidence predictions, enabling trustworthy shortlists of promising papers.
+                  Papers predicted to be accepted with <strong>top 10% confidence</strong> have <strong>>90%</strong> probability of being actually accepted in ICLR 2025
                 </div>
               </div>
               <div class="content" style="font-size:12px;color:#6b7280;">
@@ -375,8 +373,7 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  </section>
-  <!-- Results Section -->
+    </section>
   <!-- Results Section -->
   <section class="results-section">
     <style>
@@ -477,7 +474,7 @@
         </p>
 
         <ul class="metrics-list">
-          <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measuring the ability to identify <em>elite</em> submissions.</li>
+          <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measuring the ability to identify <em>spotlight-level</em> submissions.</li>
           <li><strong>Top-30% Precision</strong>: Among the top 30% highest-ranked papers, the proportion that were accepted — aligning with ICLR’s real acceptance threshold and testing if the system can predict <em>acceptable</em> papers.</li>
           <li><strong>Accept Recall</strong>: Among all papers actually accepted by ICLR 2025, the proportion that appear in the model’s top 30% predictions — measuring how many good papers the system <em>does not miss</em>.</li>
         </ul>
@@ -510,69 +507,25 @@
         </table>
       </div>
 
-      <!-- Ablation Experiments -->
-      <h3 class="subsection-title" id="ablation">Ablation Experiments</h3>
-      <div class="description">
-        <p>
-          We conduct two ablations to identify which components most strongly drive GUIDE’s advising quality.
-          First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context window.
-          Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
-        </p>
-      </div>
+        <!-- Uncertainty Analysis Section -->
+      <div class="results-container" id="uncertainty">
+        <h3 class="subsection-title">>90% Precision at High Confidence</h3>
 
-      <!-- Ablation 1 -->
-      <div class="table-container">
-        <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
-        <p class="description">
-          Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
-          into the same context window. Using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for performance,
-          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Retrieved Content</th>
-              <th>GPT-4o-mini</th>
-              <th>QwQ-32B</th>
-              <th>DeepSeek-R1</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="row-header">Full paper</td><td>45.0%</td><td>44.3%</td><td>46.7%</td></tr>
-            <tr><td class="row-header">Abstract only</td><td>47.0%</td><td>45.7%</td><td>49.0%</td></tr>
-            <tr><td class="row-header">+ Contribution</td><td>46.7%</td><td>46.0%</td><td>48.7%</td></tr>
-            <tr><td class="row-header">+ Method</td><td>47.7%</td><td>48.7%</td><td>49.7%</td></tr>
-            <tr><td class="row-header">+ Experiment</td><td>47.7%</td><td>48.3%</td><td>50.3%</td></tr>
-          </tbody>
-        </table>
-        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits;; Abstract and Method are key components.</p>
-      </div>
+        <div class="description">
+          <p>
+            Beyond overall precision and recall, <strong>GUIDE-7B</strong> quantifies its own uncertainty when evaluating research ideas,
+            allowing filtering by confidence level. When only high-confidence predictions are considered, the system achieves
+            <em>over 90% precision</em> in acceptance prediction. This indicates that GUIDE is not only competitive in aggregate ranking metrics,
+            but can also provide <em>trustworthy shortlists</em> of promising papers by exposing confidence estimates alongside rubric-guided evaluations.
+          </p>
+        </div>
 
-      <!-- Ablation 2 -->
-      <div class="table-container">
-        <h3 class="subsection-title">Ablation 2 — Rubric-Guided Prompting</h3>
-        <p class="description">
-          We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
-          whereas emphasizing only <strong>Soundness</strong> may hurt. Using <em>all</em> rubrics yields the best overall performance.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Prompt Type</th>
-              <th>GPT-4o-mini</th>
-              <th>Gemini-flash-2.0</th>
-              <th>DeepSeek-R1</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>No rubrics</td><td>45.3%</td><td>47.0%</td><td>48.0%</td></tr>
-            <tr><td>+ Soundness only</td><td>44.7%</td><td>43.3%</td><td>47.3%</td></tr>
-            <tr><td>+ Novelty only</td><td>47.3%</td><td>48.3%</td><td>49.3%</td></tr>
-            <tr><td>+ Significance only</td><td>47.7%</td><td>48.3%</td><td>49.3%</td></tr>
-            <tr style="font-weight:bold;"><td>+ All rubrics</td><td>47.7%</td><td>49.7%</td><td>50.3%</td></tr>
-          </tbody>
-        </table>
-        <p class="subtitle">Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best.</p>
+        <div class="table-container" style="padding: 1rem;display: flex; justify-content: center;">
+          <img src="static/images/uncertainty_new.png"
+              alt="Uncertainty analysis visualization"
+              class="main-research-image"
+              loading="lazy" style="width:60%; border-radius:8px;" />
+        </div>
       </div>
 
       <!-- Close the Gap with Human Reviewers -->
@@ -604,30 +557,197 @@
     </div>
   </section>
 
+  </section>
+  <!-- Results Section -->
+  <section class="ablation_section">
+    <style>
+      .goedel-row { font-weight: bold; }
 
+      .results-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .results-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .subsection-title {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        font-weight: 600;
+      }
+      .table-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        overflow: auto;
+      }
+      .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        min-width: 800px;
+      }
+      .table-container th,
+      .table-container td {
+        padding: 12px 10px;
+        text-align: left;
+        border-bottom: 1px solid #e1e1e1;
+      }
+      .table-container th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      .table-container tbody tr:hover {
+        background-color: #f5f5f5 !important;
+        transition: background-color 0.2s ease;
+      }
 
-  <!-- Uncertainty Analysis Section -->
-  <section class="results-section" id="uncertainty">
+      .highlight { color: #2980b9; font-weight: bold; }
+      .subtitle {
+        text-align: left;
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      .description {
+        margin: 1.5rem 0;
+        line-height: 1.8;
+        color: #444;
+      }
+
+      @media (max-width: 768px) {
+        .results-section { padding: 2rem 1rem; }
+        .table-container th,
+        .table-container td { padding: 8px; font-size: 0.9rem; }
+      }
+
+      .numeric-cell { text-align: left; }
+      .row-header { font-weight: 600; }
+      .metrics-list {
+        list-style-type: disc;
+        margin: 1rem 0 1rem 2rem;
+        line-height: 1.7;
+        color: #444;
+      }
+      .metrics-list li { margin-bottom: 0.6rem; }
+    </style>
+
     <div class="results-container">
-      <h2 class="section-title">>90% Precision at High Confidence</h2>
+      <h2 class="section-title">Ablation Experiments</h2>
 
+      <!-- Ablation Experiments -->
       <div class="description">
         <p>
-          Beyond overall precision and recall, <strong>GUIDE-7B</strong> quantifies its own uncertainty when evaluating research ideas,
-          allowing filtering by confidence level. When only high-confidence predictions are considered, the system achieves
-          <em>over 90% precision</em> in acceptance prediction. This indicates that GUIDE is not only competitive in aggregate ranking metrics,
-          but can also provide <em>trustworthy shortlists</em> of promising papers by exposing confidence estimates alongside rubric-guided evaluations.
+          We conduct two ablations to identify which components most strongly drive GUIDE’s advising quality.
+          First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context window.
+          Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
         </p>
       </div>
 
-      <div class="table-container" style="padding: 1rem;display: flex; justify-content: center;">
-        <img src="static/images/uncertainty_new.png"
-            alt="Uncertainty analysis visualization"
-            class="main-research-image"
-            loading="lazy" style="width:60%; border-radius:8px;" />
+      <!-- Ablation 1 -->
+      <div class="table-container">
+        <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
+        <p class="description">
+          Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
+          into the same context window. Using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for performance,
+          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Retrieved Content</th>
+              <th>GPT-4o-mini</th>
+              <th>QwQ-32B</th>
+              <th>DeepSeek-R1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-header">Full paper (baseline)</td><td>45.0%</td><td>44.3%</td><td>46.7%</td></tr>
+            <tr><td class="row-header">Abstract only</td>
+              <td>47.0% <span style="color:green;">(↑2.0%)</span></td>
+              <td>45.7% <span style="color:green;">(↑1.4%)</span></td>
+              <td>49.0% <span style="color:green;">(↑2.3%)</span></td>
+            </tr>
+            <tr><td class="row-header">+ Contribution</td>
+              <td>46.7% <span style="color:green;">(↑1.7%)</span></td>
+              <td>46.0% <span style="color:green;">(↑1.7%)</span></td>
+              <td>48.7% <span style="color:green;">(↑2.0%)</span></td>
+            </tr>
+            <tr><td class="row-header">+ Method</td>
+              <td>47.7% <span style="color:green;">(↑2.7%)</span></td>
+              <td>48.7% <span style="color:green;">(↑4.4%)</span></td>
+              <td>49.7% <span style="color:green;">(↑3.0%)</span></td>
+            </tr>
+            <tr><td class="row-header">+ Experiment</td>
+              <td>47.7% <span style="color:green;">(↑2.7%)</span></td>
+              <td>48.3% <span style="color:green;">(↑4.0%)</span></td>
+              <td>50.3% <span style="color:green;">(↑3.6%)</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits; Abstract and Method are key components.</p>
       </div>
-    </div>
+
+      <!-- Ablation 2 -->
+      <div class="table-container">
+        <h3 class="subsection-title">Ablation 2 — Rubric-Guided Prompting</h3>
+        <p class="description">
+          We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
+          whereas emphasizing only <strong>Soundness</strong> may hurt. Using <em>all</em> rubrics yields the best overall performance.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Prompt Type</th>
+              <th>GPT-4o-mini</th>
+              <th>Gemini-flash-2.0</th>
+              <th>DeepSeek-R1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-header">No rubrics (baseline)</td><td>45.3%</td><td>47.0%</td><td>48.0%</td></tr>
+            <tr><td class="row-header">+ Soundness only</td>
+              <td>44.7% <span style="color:red;">(↓0.6%)</span></td>
+              <td>43.3% <span style="color:red;">(↓3.7%)</span></td>
+              <td>47.3% <span style="color:red;">(↓0.7%)</span></td>
+            </tr>
+            <tr><td class="row-header">+ Novelty only</td>
+              <td>47.3% <span style="color:green;">(↑2.0%)</span></td>
+              <td>48.3% <span style="color:green;">(↑1.3%)</span></td>
+              <td>49.3% <span style="color:green;">(↑1.3%)</span></td>
+            </tr>
+            <tr><td class="row-header">+ Significance only</td>
+              <td>47.7% <span style="color:green;">(↑2.4%)</span></td>
+              <td>48.3% <span style="color:green;">(↑1.3%)</span></td>
+              <td>49.3% <span style="color:green;">(↑1.3%)</span></td>
+            </tr>
+            <tr style="font-weight:bold;"><td class="row-header">+ All rubrics</td>
+              <td>47.7% <span style="color:green;">(↑2.4%)</span></td>
+              <td>49.7% <span style="color:green;">(↑2.7%)</span></td>
+              <td>50.3% <span style="color:green;">(↑2.3%)</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="subtitle">Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best.</p>
+      </div>
+
+
   </section>
+
 
 
 
@@ -699,24 +819,26 @@
       <div class="figure-wrap small">
         <div class="figure-inner">
           <figure>
-            <img src="static/images/carousel1.jpg" alt="GUIDE inference pipeline overview" loading="lazy" style="width:60%; max-width:600px; border-radius:8px; display:block; margin:0 auto;">>
+            <img src="static/images/carousel1.jpg" alt="GUIDE inference pipeline overview" loading="lazy" style="width:60%; max-width:600px; border-radius:8px; display:block; margin:0 auto;">
             <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;"></figcaption>
           </figure>
         </div>
       </div>
       <div class="description">
         <p>
-          Our pipeline evaluates research ideas in four steps: (1) taking the paper’s
-          <em>abstract</em>, <em>contributions</em>, <em>method</em>, and <em>experiment setup</em>;
-          (2) retrieving section-level summaries of similar works from ICLR papers; (3) generating
-          structured feedback guided by rubrics on <strong>novelty</strong>, <strong>significance</strong>,
-          and <strong>soundness</strong>; and (4) producing a final <strong>1–10 rating</strong>
-          via a lightweight classifier. Using modular summaries allows more literature to fit into
-          the same context window, enabling richer and more precise advising at scale. With rubric
-          guidance, the feedback is detailed and multi-dimensional, assessing originality, impact,
-          and methodological &amp; experimental rigor.
+          Our pipeline evaluates research ideas in four stages:
+        </p>
+        <ul class="metrics-list">
+          <li><strong>Step 1:</strong> Take the paper’s <em>abstract</em>, <em>contributions</em>, <em>method</em>, and <em>experiment setup</em>.</li>
+          <li><strong>Step 2:</strong> Retrieve section-level summaries of similar works from ICLR papers.</li>
+          <li><strong>Step 3:</strong> Generate structured feedback guided by rubrics on <strong>novelty</strong>, <strong>significance</strong>, and <strong>soundness</strong>.</li>
+          <li><strong>Step 4:</strong> Produce a final <strong>1–10 rating</strong> via a lightweight classifier.</li>
+        </ul>
+        <p>
+          Using modular summaries allows more literature to fit into the same context window, enabling richer and more precise advising at scale. With rubric guidance, the feedback is detailed and multi-dimensional, assessing originality, impact, and methodological &amp; experimental rigor.
         </p>
       </div>
+      
 
       <!-- Training Pipeline -->
       <h3 class="subsection-title" id="Training Pipeline">Training Pipeline</h3>
