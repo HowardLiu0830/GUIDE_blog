@@ -477,9 +477,9 @@
         </p>
 
         <ul class="metrics-list">
-          <li><strong>Top-5% Precision</strong>: measures identification of <em>elite</em> submissions.</li>
-          <li><strong>Top-30% Precision</strong>: measures prediction of <em>acceptable</em> papers.</li>
-          <li><strong>Accept Recall</strong>: measures how many good papers the system <em>does not miss</em>.</li>
+          <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measuring the ability to identify <em>elite</em> submissions.</li>
+          <li><strong>Top-30% Precision</strong>: Among the top 30% highest-ranked papers, the proportion that were accepted — aligning with ICLR’s real acceptance threshold and testing if the system can predict <em>acceptable</em> papers.</li>
+          <li><strong>Accept Recall</strong>: Among all papers actually accepted by ICLR 2025, the proportion that appear in the model’s top 30% predictions — measuring how many good papers the system <em>does not miss</em>.</li>
         </ul>
 
         <p>
@@ -525,8 +525,8 @@
         <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
         <p class="description">
           Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
-          into the same context window. Using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for Top-30% Precision,
-          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatches.
+          into the same context window. Using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for performance,
+          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
         </p>
         <table>
           <thead>
@@ -545,7 +545,7 @@
             <tr><td class="row-header">+ Experiment</td><td>47.7%</td><td>48.3%</td><td>50.3%</td></tr>
           </tbody>
         </table>
-        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage; Abstract + Method are the strongest pair.</p>
+        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits;; Abstract and Method are key components.</p>
       </div>
 
       <!-- Ablation 2 -->
@@ -594,6 +594,11 @@
             <tr><td class="row-header highlight">GUIDE-7B</td><td class="highlight">69.1%</td><td class="highlight">50.1%</td></tr>
           </tbody>
         </table>
+        <p class="subtitle">
+          Takeaway: GUIDE-7B achieves human-comparable performance while outperforming all AI Scientist baselines. 
+          Despite differences in dataset and acceptance rate, its accuracy and F1 score approach those of human reviewers, 
+          demonstrating the reliability of hypothesis-centric advising over full-text review systems.
+        </p>
       </div>
 
     </div>
@@ -805,7 +810,7 @@
           In <strong>GUIDE</strong>, rubric-based prompts guide the model to provide structured, reliable feedback for early-stage research ideas.
           The rubrics emphasize three key dimensions—<em>Novelty</em>, <em>Significance</em>, and <em>Soundness</em>. By explicitly structuring evaluations
           along these axes, <strong>GUIDE</strong> reduces hallucinations, improves alignment with expert review criteria, and ensures each idea is assessed
-          for originality, impact, and methodological rigor.
+          for originality, impact, and methodological & experimental rigor.
         </p>
       </div>
 
