@@ -127,6 +127,7 @@
               <span class="author-block">
                 <a href="https://jh603.github.io/" target="_blank">Jerry Huang</a>
               </span>
+              <br>
               <span class="author-block">
                 <a href="https://cs.stanford.edu/people/jiaxuan/" target="_blank">Jiaxuan You</a>
               </span>
@@ -360,9 +361,6 @@
                   <a class="button is-dark is-xxs" href="#uncertainty">
                     See Confidence Curve
                   </a>
-                  <a class="button is-primary is-light is-xxs" href="#website-showcase">
-                    See Website Flow
-                  </a>
                 </div>
               </div>
             </div>
@@ -378,6 +376,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   </section>
+  <!-- Results Section -->
   <!-- Results Section -->
   <section class="results-section">
     <style>
@@ -436,11 +435,6 @@
         transition: background-color 0.2s ease;
       }
 
-      .block-1 { background-color: #fff0f5; }
-      .block-2 { background-color: #f0f8ff; }
-      .block-3 { background-color: #f0fff0; }
-      .block-4 { background-color: #EDEDED; }
-
       .highlight { color: #2980b9; font-weight: bold; }
       .subtitle {
         text-align: left;
@@ -460,26 +454,37 @@
         .table-container td { padding: 8px; font-size: 0.9rem; }
       }
 
-      /* Utility classes carried from the template */
       .numeric-cell { text-align: left; }
       .row-header { font-weight: 600; }
+      .metrics-list {
+        list-style-type: disc;
+        margin: 1rem 0 1rem 2rem;
+        line-height: 1.7;
+        color: #444;
+      }
+      .metrics-list li { margin-bottom: 0.6rem; }
     </style>
 
     <div class="results-container">
       <h2 class="section-title">Experimental Results</h2>
 
+      <!-- Evaluation Setup -->
       <h3 class="subsection-title">Evaluation Setup</h3>
       <div class="description">
         <p>
-          We evaluate <strong>GUIDE-7B</strong> on <strong>1,000 ICLR 2025 submissions</strong> (acceptance rate = 31.9%) using three metrics:
+          We evaluate <strong>GUIDE-7B</strong> on <strong>1,000 random ICLR 2025 submissions</strong>
+          (acceptance rate = 31.9%) using three key metrics:
         </p>
-        <ul>
-          <li><strong>Top-5% Precision</strong>: Among the top 5% highest-ranked papers by the model, the proportion that were actually accepted — measures identification of <em>elite</em> submissions.</li>
-          <li><strong>Top-30% Precision</strong>: Among the top 30% highest-ranked papers, the proportion that were accepted — aligns with the ICLR acceptance threshold and tests if the system can predict <em>acceptable</em> papers.</li>
-          <li><strong>Accept Recall</strong>: Among all papers actually accepted by ICLR 2025, the proportion that appear in the model’s top 30% predictions — measures how many good papers the system <em>does not miss</em>.</li>
+
+        <ul class="metrics-list">
+          <li><strong>Top-5% Precision</strong>: measures identification of <em>elite</em> submissions.</li>
+          <li><strong>Top-30% Precision</strong>: measures prediction of <em>acceptable</em> papers.</li>
+          <li><strong>Accept Recall</strong>: measures how many good papers the system <em>does not miss</em>.</li>
         </ul>
+
         <p>
-          Results show that <strong>GUIDE-7B</strong> achieves the highest <em>Top-30% Precision</em> (51.3%), outperforming larger general-purpose LLMs such as GPT-4o-mini and DeepSeek-R1.
+          Results show that <strong>GUIDE-7B</strong> achieves the highest <em>Top-30% Precision</em> (51.3%),
+          outperforming larger general-purpose LLMs such as <strong>GPT-4o-mini</strong> and <strong>DeepSeek-R1</strong>.
         </p>
       </div>
 
@@ -497,32 +502,81 @@
             </tr>
           </thead>
           <tbody>
-              <td class="row-header">GPT-4o-mini</td>
-              <td class="numeric-cell">70.0&nbsp;&plusmn;&nbsp;4.6%</td>
-              <td class="numeric-cell">47.7&nbsp;&plusmn;&nbsp;2.4%</td>
-              <td class="numeric-cell">44.8&nbsp;&plusmn;&nbsp;2.2%</td>
-            </tr>
-              <td class="row-header">QwQ-32B</td>
-              <td class="numeric-cell">66.7&nbsp;&plusmn;&nbsp;1.2%</td>
-              <td class="numeric-cell">48.6&nbsp;&plusmn;&nbsp;1.5%</td>
-              <td class="numeric-cell">45.8&nbsp;&plusmn;&nbsp;1.4%</td>
-            </tr>
-              <td class="row-header">DeepSeek-R1</td>
-              <td class="numeric-cell">69.3&nbsp;&plusmn;&nbsp;4.6%</td>
-              <td class="numeric-cell">50.2&nbsp;&plusmn;&nbsp;0.5%</td>
-              <td class="numeric-cell">47.2&nbsp;&plusmn;&nbsp;0.5%</td>
-            </tr>
-              <td class="row-header">GUIDE-7B</td>
-              <td class="numeric-cell highlight">72.0&nbsp;&plusmn;&nbsp;2.0%</td>
-              <td class="numeric-cell highlight">51.3&nbsp;&plusmn;&nbsp;0.4%</td>
-              <td class="numeric-cell highlight">48.3&nbsp;&plusmn;&nbsp;0.3%</td>
-            </tr>
+            <tr><td class="row-header">GPT-4o-mini</td><td>70.0&nbsp;&plusmn;&nbsp;4.6%</td><td>47.7&nbsp;&plusmn;&nbsp;2.4%</td><td>44.8&nbsp;&plusmn;&nbsp;2.2%</td></tr>
+            <tr><td class="row-header">QwQ-32B</td><td>66.7&nbsp;&plusmn;&nbsp;1.2%</td><td>48.6&nbsp;&plusmn;&nbsp;1.5%</td><td>45.8&nbsp;&plusmn;&nbsp;1.4%</td></tr>
+            <tr><td class="row-header">DeepSeek-R1</td><td>69.3&nbsp;&plusmn;&nbsp;4.6%</td><td>50.2&nbsp;&plusmn;&nbsp;0.5%</td><td>47.2&nbsp;&plusmn;&nbsp;0.5%</td></tr>
+            <tr><td class="row-header highlight">GUIDE-7B</td><td class="highlight">72.0&nbsp;&plusmn;&nbsp;2.0%</td><td class="highlight">51.3&nbsp;&plusmn;&nbsp;0.4%</td><td class="highlight">48.3&nbsp;&plusmn;&nbsp;0.3%</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Baseline Comparison -->
-      <h3 class="subsection-title">Baseline Comparison</h3>
+      <!-- Ablation Experiments -->
+      <h3 class="subsection-title" id="ablation">Ablation Experiments</h3>
+      <div class="description">
+        <p>
+          We conduct two ablations to identify which components most strongly drive GUIDE’s advising quality.
+          First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context window.
+          Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
+        </p>
+      </div>
+
+      <!-- Ablation 1 -->
+      <div class="table-container">
+        <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
+        <p class="description">
+          Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
+          into the same context window. Using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for Top-30% Precision,
+          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatches.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Retrieved Content</th>
+              <th>GPT-4o-mini</th>
+              <th>QwQ-32B</th>
+              <th>DeepSeek-R1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-header">Full paper</td><td>45.0%</td><td>44.3%</td><td>46.7%</td></tr>
+            <tr><td class="row-header">Abstract only</td><td>47.0%</td><td>45.7%</td><td>49.0%</td></tr>
+            <tr><td class="row-header">+ Contribution</td><td>46.7%</td><td>46.0%</td><td>48.7%</td></tr>
+            <tr><td class="row-header">+ Method</td><td>47.7%</td><td>48.7%</td><td>49.7%</td></tr>
+            <tr><td class="row-header">+ Experiment</td><td>47.7%</td><td>48.3%</td><td>50.3%</td></tr>
+          </tbody>
+        </table>
+        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage; Abstract + Method are the strongest pair.</p>
+      </div>
+
+      <!-- Ablation 2 -->
+      <div class="table-container">
+        <h3 class="subsection-title">Ablation 2 — Rubric-Guided Prompting</h3>
+        <p class="description">
+          We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
+          whereas emphasizing only <strong>Soundness</strong> may hurt. Using <em>all</em> rubrics yields the best overall performance.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Prompt Type</th>
+              <th>GPT-4o-mini</th>
+              <th>Gemini-flash-2.0</th>
+              <th>DeepSeek-R1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>No rubrics</td><td>45.3%</td><td>47.0%</td><td>48.0%</td></tr>
+            <tr><td>+ Soundness only</td><td>44.7%</td><td>43.3%</td><td>47.3%</td></tr>
+            <tr><td>+ Novelty only</td><td>47.3%</td><td>48.3%</td><td>49.3%</td></tr>
+            <tr><td>+ Significance only</td><td>47.7%</td><td>48.3%</td><td>49.3%</td></tr>
+            <tr style="font-weight:bold;"><td>+ All rubrics</td><td>47.7%</td><td>49.7%</td><td>50.3%</td></tr>
+          </tbody>
+        </table>
+        <p class="subtitle">Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best.</p>
+      </div>
+
+      <!-- Close the Gap with Human Reviewers -->
+      <h3 class="subsection-title">Close the Gap with Human Reviewers</h3>
       <div class="table-container">
         <table>
           <thead>
@@ -533,26 +587,11 @@
             </tr>
           </thead>
           <tbody>
-              <td class="row-header">Human (NeurIPS)</td>
-              <td class="numeric-cell">73.4%</td>
-              <td class="numeric-cell">48.4%</td>
-            </tr>
-              <td class="row-header">AI Scientist with DeepSeek-R1</td>
-              <td class="numeric-cell">40.7%</td>
-              <td class="numeric-cell">49.5%</td>
-            </tr>
-              <td class="row-header">AI Scientist with QwQ-32B</td>
-              <td class="numeric-cell">42.7%</td>
-              <td class="numeric-cell">43.3%</td>
-            </tr>
-              <td class="row-header">AI Scientist with GPT-4.1-nano</td>
-              <td class="numeric-cell">61.2%</td>
-              <td class="numeric-cell">20.8%</td>
-            </tr>
-              <td class="row-header">GUIDE-7B</td>
-              <td class="numeric-cell highlight">69.1%</td>
-              <td class="numeric-cell highlight">50.1%</td>
-            </tr>
+            <tr><td class="row-header">Human (NeurIPS)</td><td>73.4%</td><td>48.4%</td></tr>
+            <tr><td class="row-header">AI Scientist with DeepSeek-R1</td><td>40.7%</td><td>49.5%</td></tr>
+            <tr><td class="row-header">AI Scientist with QwQ-32B</td><td>42.7%</td><td>43.3%</td></tr>
+            <tr><td class="row-header">AI Scientist with GPT-4.1-nano</td><td>61.2%</td><td>20.8%</td></tr>
+            <tr><td class="row-header highlight">GUIDE-7B</td><td class="highlight">69.1%</td><td class="highlight">50.1%</td></tr>
           </tbody>
         </table>
       </div>
@@ -560,57 +599,12 @@
     </div>
   </section>
 
-  <!-- Ablation Experiments Section -->
-  <section class="results-section" id="ablation">
-    <div class="results-container">
-      <h2 class="section-title">Ablation Experiments</h2>
 
-      <div class="description">
-        <p>
-          We conduct two ablations to identify which components most strongly drive GUIDE’s advising quality.
-          First, <em>Modular Summarization</em> tests how different retrieved contents affect precision under a limited context window.
-          Second, <em>Rubric-Guided Prompting</em> isolates the effect of emphasizing specific review rubrics in the system prompt.
-        </p>
-      </div>
-
-      <!-- Ablation 1 -->
-      <div class="table-container" style="padding: 1rem;">
-        <h3 class="subsection-title">Ablation 1 — Scalable Advising with Modular Summarization</h3>
-        <p class="description">
-          Replacing long full-text retrieval with concise, sectioned summaries lets the system pack more <em>relevant</em> literature
-          into the same context window. Empirically, using summarized <strong>Abstract</strong> and <strong>Method</strong> is most beneficial for Top-30% Precision,
-          while adding <strong>Experiment Setups</strong> can be inconsistent due to cross-paper mismatch of settings.
-        </p>
-        <div style="max-width: 90%; margin: 1rem auto; display: flex; justify-content: center;">
-          <img src="static/images/ablation_summarization.png"
-              alt="Ablation on retrieved contents: full paper vs. modular summaries"
-              loading="lazy" style="width:60%; border-radius:8px;" />
-        </div>
-        <p class="subtitle">Takeaway: Summarized retrieval improves precision by increasing relevant coverage under context limits; Abstract + Method are the strongest pair.</p>
-      </div>
-
-      <!-- Ablation 2 -->
-      <div class="table-container" style="padding: 1rem;">
-        <h3 class="subsection-title">Ablation 2 — Rubric-Guided Prompting</h3>
-        <p class="description">
-          We compare prompts that emphasize different rubrics. Focusing on <strong>Novelty</strong> and <strong>Significance</strong> consistently boosts Top-30% Precision,
-          whereas emphasizing only <strong>Soundness</strong> may hurt (overly strict to experimental design). Using <em>all</em> rubrics yields the best overall performance.
-        </p>
-        <div style="max-width: 90%; margin: 1rem auto;display: flex; justify-content: center;">
-          <img src="static/images/ablation_rubrics.png"
-              alt="Ablation on rubric prompts: none vs. single-rubric vs. all"
-              loading="lazy" style="width:60%; border-radius:8px;" />
-        </div>
-        <p class="subtitle">Takeaway: Novelty &amp; Significance drive the most gain; Soundness-only can be detrimental; “All rubrics” performs best across backbones.</p>
-      </div>
-
-    </div>
-  </section>
 
   <!-- Uncertainty Analysis Section -->
   <section class="results-section" id="uncertainty">
     <div class="results-container">
-      <h2 class="section-title">Uncertainty-Aware Evaluation</h2>
+      <h2 class="section-title">>90% Precision at High Confidence</h2>
 
       <div class="description">
         <p>
@@ -700,7 +694,7 @@
       <div class="figure-wrap small">
         <div class="figure-inner">
           <figure>
-            <img src="static/images/carousel1.jpg" alt="GUIDE inference pipeline overview" loading="lazy">
+            <img src="static/images/carousel1.jpg" alt="GUIDE inference pipeline overview" loading="lazy" style="width:60%; max-width:600px; border-radius:8px; display:block; margin:0 auto;">>
             <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;"></figcaption>
           </figure>
         </div>
@@ -864,142 +858,6 @@
     </div>
   </section>
 
-  <section class="case-section" id="case-website">
-    <style>
-      .case-section {
-        padding: 4rem 2rem;
-        background: #f8f9fa;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        color: #333;
-        line-height: 1.6;
-      }
-      .case-container {
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-      .section-title {
-        text-align: left;
-        margin-bottom: 2rem;
-        color: #2c3e50;
-        font-size: 2rem;
-        font-weight: bold;
-      }
-      .subsection-title {
-        color: #2c3e50;
-        font-size: 1.5rem;
-        margin: 2rem 0 1rem;
-        font-weight: 600;
-        text-align: left;
-      }
-      .description {
-        margin: 1.25rem 0 1.75rem;
-        line-height: 1.8;
-        color: #444;
-        text-align: left;
-      }
-      /* Smaller captions below slides */
-      .case-section .subtitle {
-        font-size: 0.9rem !important;
-        line-height: 1.4;
-        color: #666;
-        margin-top: 0.75rem;
-      }
-      /* Limit slide image width and center */
-      .case-section .slide-img-wrap {
-        max-width: 70%;
-        margin: 0 auto;
-      }
-      .case-section .slide-img-wrap img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-      /* Button row spacing */
-      .case-section .buttons.is-centered {
-        margin-top: 0.5rem;
-      }
-      @media (max-width: 768px) {
-        .case-section { padding: 2rem 1rem; }
-        .case-section .slide-img-wrap { max-width: 95%; }
-      }
-    </style>
-
-    <div class="case-container">
-      <h3 class="subsection-title">Website Showcase</h3>
-      <div class="description">
-        Explore how GUIDE works end-to-end — retrieval, advising, and our monthly arXiv paper recommendations.
-      </div>
-
-      <div class="columns is-centered m-6">
-        <div class="column is-full has-text-centered content">
-
-          <!-- Unique ID to avoid collisions with other carousels -->
-          <div id="results-carousel-website" class="carousel results-carousel">
-
-            <!-- Slide 1: Retrieval -->
-            <div class="box m-5">
-              <div class="content has-text-centered">
-                <div class="slide-img-wrap">
-                  <img src="static/images/thinking.png"
-                      alt="Retrieving related literature with modular summaries"
-                      loading="lazy" />
-                </div>
-                <h2 class="subtitle has-text-centered">
-                  🔎 <strong>Retrieval — Modular Summaries</strong><br>
-                  Our model retrieves section-level summaries (Abstract/Method/…) to pack more
-                  <em>relevant</em> literature into the same context window.
-                </h2>
-                <div class="buttons is-centered">
-                  <a class="button is-primary is-light is-small" href="#inference-pipeline">View Pipeline</a>
-                  <a class="button is-dark is-small" href="#ablation">Why It Scales</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2: Advising -->
-            <div class="box m-5">
-              <div class="content has-text-centered">
-                <div class="slide-img-wrap">
-                  <img src="static/images/advising.png"
-                      alt="Rubric-guided advising with structured feedback"
-                      loading="lazy" />
-                </div>
-                <h2 class="subtitle has-text-centered">
-                  🧭 <strong>Advising — Rubric-Guided</strong><br>
-                  Structured, conference-style feedback on <strong>novelty</strong>, <strong>significance</strong>,
-                  and <strong>soundness</strong> for interpretable, trustworthy evaluations.
-                </h2>
-                <div class="buttons is-centered">
-                  <a class="button is-primary is-light is-small" href="#rubric-eval">See Rubrics</a>
-                  <a class="button is-dark is-small" href="#experiment-results">Model Results</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3: Paper Recommendation -->
-            <div class="box m-5">
-              <div class="content has-text-centered">
-                <div class="slide-img-wrap">
-                  <img src="static/images/recommendation.png"
-                      alt="Monthly high-score arXiv paper recommendations"
-                      loading="lazy" />
-                </div>
-                <h2 class="subtitle has-text-centered">
-                  📚 <strong>Monthly arXiv Recommendations</strong><br>
-                  We surface high-score arXiv papers every month with filters (topic / month / score) — a fast track to promising research.
-                </h2>
-                <div class="buttons is-centered">
-                  <a class="button is-dark is-small" href="#uncertainty">Why Confidence Matters</a>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /carousel -->
-
-        </div>
-      </div>
-    </div>
-  </section>
 
     
     
@@ -1009,7 +867,7 @@
       <h2 class="title is-3 has-text-centered">BibTeX</h2>
       <pre><code>@misc{liu2025guide,
     title        = {GUIDE: Towards Scalable Advising for Research Ideas},
-    author       = {Yaowenqi Liu and Bingxu Meng and Rui Pan and Jerry Huang and Tong Zhang},
+    author       = {Yaowenqi Liu and Bingxu Meng and Rui Pan and Yuxing Liu and Jerry Huang and Jiaxuan You and Tong Zhang},
     year         = {2025},
     eprint       = {2507.08870},
     archivePrefix= {arXiv},
